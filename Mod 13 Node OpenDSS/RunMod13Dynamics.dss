@@ -1,0 +1,28 @@
+clear
+
+Compile (Mod13NodeTest.dss)
+
+RegControl.Reg1.maxtapchange=1  Delay=30  !Allow only one tap change per solution. This one moves first
+RegControl.Reg2.maxtapchange=1  Delay=30  !Allow only one tap change per solution
+RegControl.Reg3.maxtapchange=1  Delay=30  !Allow only one tap change per solution
+
+
+New Monitor.IMmonitor element=indmach012.mot634 mode=1 terminal=1 PPolar=no residual=no VIPolar=yes
+New Monitor.IMvi element=indmach012.mot634 mode=0 terminal=1
+New Monitor.IMstatevars element=indmach012.mot634 mode=3 terminal=1
+
+
+set mode=dynamics stepsize = 0.001 maxiterations=500 number=20
+solve
+
+New Fault.myFault phases=3 bus1=671
+set number=50
+solve
+
+Fault.myFault.enabled=False
+set number=50
+solve
+
+
+! Export monitors
+export monitors all
