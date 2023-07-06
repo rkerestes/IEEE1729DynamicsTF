@@ -1,0 +1,24 @@
+clear
+
+Compile (6Bus-GrdYD-IM.dss)
+
+New Monitor.IMmonitor element=indmach012.IM1 mode=1 terminal=1 PPolar=no residual=no VIPolar=yes
+New Monitor.IMvi element=indmach012.IM1 mode=0 terminal=1
+New Monitor.IMstatevars element=indmach012.IM1 mode=3 terminal=1
+
+
+set mode=dynamics stepsize = 0.001 maxiterations=500 number=20
+solve
+
+New Fault.myFault phases=3 bus1=n4
+set number=50
+solve
+
+Fault.myFault.enabled=False
+set number=50
+solve
+
+
+! Export monitors
+export monitors all
+
