@@ -1,0 +1,189 @@
+//	Copyright (C) 2023 Battelle Memorial Institute
+
+// 6 Node Test Feeder (modified from the IEEE 4 Node Test Feeder)
+
+// IEEE 4 Node Test Feeder: Balanced Load, Step-Down Three-Phase Transformer
+// Ref: https://cmte.ieee.org/pes-testfeeders/resources/
+// 4-Bus Test Feeder Cases:  These test the capability of a program to represent transformers of various configurations, full three phase lines, and unbalanced loads. Since the problems are so small, very close agreement with the test feeder results is expected.
+// A good match would have an error less than 0.05%.
+
+//== Time
+clock {
+	timezone EST+5EDT;
+	starttime '2000-01-01 0:00:00';
+	stoptime '2000-01-01 0:00:02';
+};
+
+//== Settings
+#set relax_naming_rules=1
+#set profiler=1
+
+//== Modules
+module tape;
+module reliability {
+	report_event_log false;
+}
+module powerflow {
+	solver_method NR;
+	line_capacitance FALSE;
+};
+
+//==Fault Check
+object fault_check {
+	name base_fault_check_object;
+	check_mode ONCHANGE;
+	strictly_radial false;
+	grid_association true; //flag to ensure non-monolithic islands
+}
+
+//== Measurements for Validation
+object voltdump {
+	filename test_assets_volt.csv;
+	mode POLAR;
+};
+object currdump {
+	filename test_assets_curr.csv;
+	mode POLAR;
+};
+
+//== Equipments
+object overhead_line_conductor { //Phase Conductor (336,400 26/7)
+	name "ohlc_pc";
+	geometric_mean_radius 0.0244;
+	resistance 0.306;
+}
+
+object overhead_line_conductor { //Neutral Conductor (4/0 6/1 ACSR)
+	name "ohlc_nc";
+	geometric_mean_radius 0.00814;
+	resistance 0.592;
+}
+
+object line_spacing {
+	name "ls_kersting_book";
+	distance_AB 2.5;
+	distance_BC 4.5;
+	distance_AC 7.0;
+	distance_AN 5.656854;
+	distance_BN 4.272002;
+	distance_CN 5.0;
+}
+
+object line_configuration {
+	name "lc_ohl_ABCN";
+	conductor_A "ohlc_pc";
+	conductor_B "ohlc_pc";
+	conductor_C "ohlc_pc";
+	conductor_N "ohlc_nc";
+	spacing "ls_kersting_book";
+}
+
+object transformer_configuration {
+	name "xmf_config";
+	connect_type 1;
+	power_rating 6000;
+	primary_voltage 12470;
+	secondary_voltage 4160;
+	// connect_type WYE_WYE;
+	// connect_type DELTA_DELTA;
+	connect_type DELTA_GWYE;
+	resistance 0.01;
+	reactance 0.06;
+}
+
+//== IEEE 4 Node Test System
+object node {
+	name node_1;
+	phases "ABCN";
+	nominal_voltage 7199.557856794634;
+	bustype SWING;
+}
+
+object overhead_line:12 {
+	phases "ABCN";
+	from node_1;
+	to node_2;
+	length 2000;
+	configuration "lc_ohl_ABCN";
+}
+
+object node {
+	name node_2;
+	phases "ABCN";
+	nominal_voltage 7199.557856794634;
+}
+
+object transformer:23 {
+	phases "ABCN";
+	from node_2;
+	to node_3;
+	configuration "xmf_config";
+}
+
+object node {
+	name node_3;
+	phases "ABCN";
+	nominal_voltage 2401.7771198288433;
+}
+
+object overhead_line:34 {
+	phases "ABCN";
+	from node_3;
+	to node_4;
+	length 2500;
+	configuration "lc_ohl_ABCN";
+}
+
+object node {
+	name node_4;
+	phases "ABCN";
+	nominal_voltage 2401.7771198288433;
+}
+
+object load {
+	name load_4;
+	parent "node_4";
+	phases "ABCN";
+	constant_power_A +1800000.000+871779.789j;
+	constant_power_B +1800000.000+871779.789j;
+	constant_power_C +1800000.000+871779.789j;
+	nominal_voltage 2401.7771198288433;
+}
+
+object overhead_line:45 {
+	phases "ABCN";
+	from node_4;
+	to node_5;
+	length 1000;
+	configuration "lc_ohl_ABCN";
+}
+
+object node {
+	name node_5;
+	phases "ABCN";
+	nominal_voltage 2401.7771198288433;
+}
+
+object overhead_line:56 {
+	phases "ABCN";
+	from node_5;
+	to node_6;
+	length 1000;
+	configuration "lc_ohl_ABCN";
+}
+
+object node {
+	name node_6;
+	phases "ABCN";
+	nominal_voltage 2401.7771198288433;
+}
+
+object load {
+	name load_6;
+	parent "node_6";
+	phases "ABCN";
+	constant_power_A +200000.000+96864.421j;
+	constant_power_B +200000.000+96864.421j;
+	constant_power_C +200000.000+96864.421j;
+	nominal_voltage 2401.7771198288433;
+}
