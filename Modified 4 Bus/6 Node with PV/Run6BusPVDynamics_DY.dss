@@ -1,0 +1,34 @@
+clear
+
+Compile 6Bus-DY-Bal-PV.dss
+
+
+New Monitor.PVPQ element=PVSystem.PV1 mode=1 terminal=1 PPolar=no residual=no VIPolar=yes
+New Monitor.PVVI element=PVSystem.PV1 mode=0 terminal=1
+New Monitor.PVstatevars element=PVSystem.PV1 mode=3 terminal=1
+
+solve mode=snap
+
+
+set mode=dynamics stepsize = 0.001 maxiterations=500 number=20
+solve
+
+New Fault.myFault phases=3 bus1=n4
+set number=50
+solve
+
+Fault.myFault.enabled=False
+set number=50
+solve
+
+
+! Export monitors
+export monitors all
+
+! active power output
+plot monitor object=PVPQ channels=(1,3, 5)
+! Voltages at the PV Point of connection
+plot monitor object=PVVI channels=(1,3, 5)
+! Currents at the PV Point of connection
+plot monitor object=PVVI channels=(7,9, 11)
+
