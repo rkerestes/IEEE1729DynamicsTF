@@ -2,7 +2,7 @@ clear
 
 ! This is a 6 node syste which is a modified version of the IEEE 4 Node Test System with a Grd. Y/D step down
 
-new circuit.4busYDBal   basekV=12.47 phases=3 bus1 = sourcebus
+new circuit.4busDYBal   basekV=12.47 phases=3 bus1 = sourcebus
 ~ mvasc3=200000 200000
 
 Set earthmodel=carson

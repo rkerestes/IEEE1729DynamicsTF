@@ -1,6 +1,6 @@
 clear 
 
-Compile (6Bus-GrdYD-IM.dss)
+Compile (6Bus-DY-IM.dss)
 
 New Monitor.IMmonitor element=indmach012.IM1 mode=1 terminal=1 PPolar=no residual=no VIPolar=yes
 New Monitor.IMvi element=indmach012.IM1 mode=0 terminal=1
