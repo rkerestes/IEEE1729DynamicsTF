@@ -11,7 +11,13 @@ new circuit.4busDYBal   basekV=12.47 phases=3
 new wiredata.conductor Runits=mi Rac=0.306 GMRunits=ft GMRac=0.0244  Radunits=in Diam=0.721 
 new wiredata.neutral   Runits=mi Rac=0.592 GMRunits=ft GMRac=0.00814 Radunits=in Diam=0.563 
 
-! **** DEFINE LINE GEOMETRY; REDUCE OUT THE NEUTRAL
+! **** DEFINE LINE 3 WIRE GEOMETRY
+new linegeometry.3wire nconds=3 nphases=3 reduce=yes 
+~ cond=1 wire=conductor units=ft x=-4   h=28 
+~ cond=2 wire=conductor units=ft x=-1.5 h=28 
+~ cond=3 wire=conductor units=ft x=3    h=28 
+
+! **** DEFINE LINE 4 WIRE GEOMETRY; REDUCE OUT THE NEUTRAL
 new linegeometry.4wire nconds=4 nphases=3 reduce=yes 
 ~ cond=1 wire=conductor units=ft x=-4   h=28 
 ~ cond=2 wire=conductor units=ft x=-1.5 h=28 
@@ -19,7 +25,7 @@ new linegeometry.4wire nconds=4 nphases=3 reduce=yes
 ~ cond=4 wire=neutral   units=ft x=0    h=24 
 
 ! **** 12.47 KV LINE
-new line.line1 geometry=4wire length=2000 units=ft bus1=sourcebus bus2=n2
+new line.line1 geometry=3wire length=2000 units=ft bus1=sourcebus bus2=n2
 
 ! **** 3-PHASE STEP-DOWN TRANSFORMER 12.47/4.16 KV Delta-Ygrd
 new transformer.t1 xhl=6
