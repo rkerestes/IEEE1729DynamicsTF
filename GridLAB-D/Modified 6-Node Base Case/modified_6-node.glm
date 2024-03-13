@@ -1,6 +1,8 @@
 //	Copyright (C) 2023 Battelle Memorial Institute
 
 // 6 Node Test Feeder (modified from the IEEE 4 Node Test Feeder)
+// Author: Jing Xie
+// Modified Date: 2024-3-11
 
 // IEEE 4 Node Test Feeder: Balanced Load, Step-Down Three-Phase Transformer
 // Ref: https://cmte.ieee.org/pes-testfeeders/resources/
@@ -26,6 +28,7 @@ module reliability {
 module powerflow {
 	solver_method NR;
 	line_capacitance FALSE;
+	// line_capacitance TRUE;
 };
 
 //==Fault Check
@@ -51,12 +54,14 @@ object overhead_line_conductor { //Phase Conductor (336,400 26/7)
 	name "ohlc_pc";
 	geometric_mean_radius 0.0244;
 	resistance 0.306;
+	diameter 0.721;
 }
 
 object overhead_line_conductor { //Neutral Conductor (4/0 6/1 ACSR)
 	name "ohlc_nc";
 	geometric_mean_radius 0.00814;
 	resistance 0.592;
+	diameter 0.563;
 }
 
 object line_spacing {
@@ -67,6 +72,11 @@ object line_spacing {
 	distance_AN 5.656854;
 	distance_BN 4.272002;
 	distance_CN 5.0;
+
+	distance_AE 28;
+	distance_BE 28;
+	distance_CE 28;
+	distance_NE 24;
 }
 
 object line_configuration {
