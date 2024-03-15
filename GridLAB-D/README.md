@@ -1,7 +1,8 @@
 # GridLAB-D (GLD)
 
 ## GLD730_x64_20230616.zip
-This zip package, provided by Dr. Francis K Tuffner, includes the compiled GLD: GridLAB-D 5.0.0-19508 (346842f9:feature/730) 64-bit WINDOWS RELEASE.
+- This zip package, provided by Dr. Francis K Tuffner, includes the compiled GLD: GridLAB-D 5.0.0-19508 (346842f9:feature/730) 64-bit WINDOWS RELEASE.
+- GridLAB-D v5.2 Release (Oct 12, 2023): https://github.com/gridlab-d/gridlab-d/releases/tag/v5.2
 
 ## IEEE 4 Node Test Feeder/ieee_4-node.glm
 - GLD model file of the IEEE 4-Node Test System.
