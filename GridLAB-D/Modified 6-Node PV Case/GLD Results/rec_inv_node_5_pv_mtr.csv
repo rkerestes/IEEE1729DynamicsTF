@@ -1,0 +1,11 @@
+# file...... rec_inv_node_5_pv_mtr.csv
+# date...... Fri Mar 22 16:35:57 2024
+# user...... xiej204
+# host...... (null)
+# target.... inverter 28
+# trigger... (none)
+# interval.. 1
+# limit..... 0
+# timestamp,power_A, P_In, VA_Out.real, VA_Out.imag, VA_Out
+2000-01-01 00:00:00 EST,+0+0i,+592184,+342000,+0,+342000+0j
+2000-01-01 00:00:01 EST,+0+0i,+592184,+342000,+0,+342000+0j

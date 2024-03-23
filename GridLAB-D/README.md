@@ -9,9 +9,11 @@
 - GLD model file of the IEEE 4-Node Test System.
 - Power flow results have been verified, with respect to the "Solutions" (Page 6) of "IEEE 4 Node Test Feeder Revised Sept. 19, 2006.doc".
 
-## Modified 6-Node Base Case/modified_6-node.glm
-- GLD model file of the Modified 6-Node Test System, see "IEEE 6 Bus (Mod 4 Bus) Test System.docx" for details.
+## Modified 6-Node Base Case
+- "modified_6-node.glm" is the GLD model file of the Modified 6-Node Test System, see "IEEE 6 Bus (Mod 4 Bus) Test System.docx" for details.
 - Power flow results of GLD are compared with the solutions of OpenDSS and Simscape in "Power Flow Results of Base Case.docx".
+- "DSS Model and Result Files" is the folder of the DSS model and results files.
 
-## Modified 6-Node Base Case/DSS Model and Result Files
-- This folder contains the DSS model and results files.
+## Modified 6-Node PV Case
+- "modified_6-node_pv_static.glm" is the GLD model file of the Modified 6-Node Test System with PV added on Node 5.
+- Power flow results of GLD are stored in the folder "GLD Results", while voltages and currents are reported in "Power Flow Results of PV Case.docx".
