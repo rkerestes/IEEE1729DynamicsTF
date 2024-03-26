@@ -1,0 +1,11 @@
+# file...... rec_swt_node_5_pv.csv
+# date...... Fri Mar 22 16:35:57 2024
+# user...... xiej204
+# host...... (null)
+# target.... switch 24
+# trigger... (none)
+# interval.. 1
+# limit..... 0
+# timestamp,power_out_A.real, power_out_A.imag, power_out_A, power_out_B.real, power_out_B.imag, power_out_B, power_out_C.real, power_out_C.imag, power_out_C, power_out.real, power_out.imag, power_out
+2000-01-01 00:00:00 EST,-114000,-2.19006e-09,+114000-180d,-114000,-2.14495e-08,+114000-180d,-114000,+2.83399e-09,+114000+180d,-342000,-2.08056e-08,+342000-180d
+2000-01-01 00:00:01 EST,-114000,+3.87154e-08,+114000+180d,-114000,+4.35102e-09,+114000+180d,-114000,-6.763e-09,+114000-180d,-342000,+3.63034e-08,+342000+180d
