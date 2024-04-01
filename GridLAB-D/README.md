@@ -17,3 +17,7 @@
 ## Modified 6-Node PV Case
 - "modified_6-node_pv_static.glm" is the GLD model file of the Modified 6-Node Test System with PV added on Node 5.
 - Power flow results of GLD are stored in the folder "GLD Results", while voltages and currents are reported in "Power Flow Results of PV Case.docx".
+
+## Modified 6-Node IM Case
+- The power flow results do not look very good.
+- The motor model of GLD may need some revisions before it can be used for the studies here.
