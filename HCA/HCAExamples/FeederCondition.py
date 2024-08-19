@@ -97,32 +97,3 @@ class FeederCondition:
                 # dss.text("batchedit capacitor..* enabled=no")
 
                 dss.solution.solve()
-
-    @classmethod
-    def existing_generation(cls, dss: py_dss_interface.DSS, add: bool = False, mult_existing_gen: float = 1):
-        bus_gen = list()
-        if add:
-
-            dss.generators.first()
-
-            for _ in range(dss.generators.count):
-                dss.circuit.set_active_element(f"generator.{dss.generators.name}")
-                name = dss.generators.name
-                bus = dss.cktelement.bus_names[0].split(".")[0]
-                kv = dss.generators.kv
-                kw = dss.generators.kw * mult_existing_gen
-
-                dss.text(f"new load.{name} kv={kv} bus1={bus} kw={-kw} pf=1 model=5 status=fixed")  # TODO test with load
-
-                bus_gen.append(dss.cktelement.bus_names[0].split(".")[0])
-
-                dss.generators.next()
-
-            dss.text("Batchedit generator..* enabled=No")
-            # dss.text("Batchedit generator..* enabled=Yes kw=500")
-            dss.solution.solve()
-
-        else:
-            dss.text("Batchedit generator..* enabled=No")
-            # dss.text("Batchedit generator..* enabled=Yes kw=500")
-            dss.solution.solve()
