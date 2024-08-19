@@ -116,6 +116,15 @@ class HCSteps:
         return violation
 
     @classmethod
+    def check_reverse_power_violation(cls, dss: py_dss_interface.DSS):
+        violation = False
+
+        if -dss.circuit.total_power[0] < 0.0:
+            violation = True
+
+        return violation
+
+    @classmethod
     def check_qsts_overvoltage_violation(cls, dss: py_dss_interface.DSS):
         violation = False
         di_voltexceptions_1_file = pathlib.Path(script_path).joinpath("feeders", "8bus", "source", "DI_yr_0",
