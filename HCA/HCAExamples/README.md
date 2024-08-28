@@ -39,4 +39,5 @@ YouTube videos:
 
 ## Authors
 - Paulo Radatz - pradatz@epri.com
+- Tom McDermott - t.mcdermott@ieee.org
 
