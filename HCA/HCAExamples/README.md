@@ -4,7 +4,7 @@ The example files are the *.ipynb files, and the *.py files contain the code use
 
 ## Requirements to run the examples:
 
-1. OpenDSS feeder model is located in <https://github.com/rkerestes/IEEE1729DynamicsTF/tree/main/HCA/HCABase.dss> and <https://github.com/rkerestes/IEEE1729DynamicsTF/tree/main/HCA/Buscoords.dat>
+1. OpenDSS feeder model is located in <https://github.com/rkerestes/IEEE1729TestSystems/tree/main/HCA/HCABase.dss> and <https://github.com/rkerestes/IEEE1729TestSystems/tree/main/HCA/Buscoords.dat>
 2. Python 64 bit (tested with versions 3.12.3 and 3.11.4)
 3. Python packages are provided in the requirements.txt file in the HCAExamples folder
 4. Jupyter Notebook 7.2.1
@@ -39,4 +39,5 @@ YouTube videos:
 
 ## Authors
 - Paulo Radatz - pradatz@epri.com
+- Tom McDermott - t.mcdermott@ieee.org
 
